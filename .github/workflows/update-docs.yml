@@ -16,6 +16,9 @@ on:
       - 'parser.js'
       - '.github/workflows/update-docs.yml'
 
+permissions:
+  contents: write
+
 jobs:
   update-docs:
     runs-on: ubuntu-latest
