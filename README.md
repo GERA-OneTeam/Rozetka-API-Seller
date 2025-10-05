@@ -1,6 +1,6 @@
 # Rozetka Seller API - Документація
 
-[![Оновлення документації](https://github.com/YOUR_USERNAME/rozetka-api-docs/actions/workflows/update-docs.yml/badge.svg)](https://github.com/YOUR_USERNAME/rozetka-api-docs/actions/workflows/update-docs.yml)
+[![Оновлення документації](https://github.com/GERA-OneTeam/Rozetka-API-Seller/actions/workflows/update-docs.yml/badge.svg)](https://github.com/GERA-OneTeam/Rozetka-API-Seller/actions/workflows/update-docs.yml)
 
 Автоматично згенерована та оновлювана документація для **Rozetka Marketplace API**.
 
