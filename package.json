@@ -1,0 +1,23 @@
+{
+  "name": "rozetka-api-docs-parser",
+  "version": "1.0.0",
+  "description": "Парсер документації Rozetka Marketplace API",
+  "main": "parser.js",
+  "type": "module",
+  "scripts": {
+    "parse": "node parser.js",
+    "update": "node parser.js && git add docs/ && git diff --staged --quiet || (git commit -m '🔄 Оновлення документації API' && git push)"
+  },
+  "keywords": [
+    "rozetka",
+    "api",
+    "documentation",
+    "parser"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {}
+}

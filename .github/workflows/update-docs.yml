@@ -1,0 +1,65 @@
+name: Оновлення документації API
+
+on:
+  # Запуск щодня о 00:00 UTC
+  schedule:
+    - cron: '0 0 * * *'
+
+  # Можливість запустити вручну
+  workflow_dispatch:
+
+  # Запуск при push в main
+  push:
+    branches:
+      - main
+    paths:
+      - 'parser.js'
+      - '.github/workflows/update-docs.yml'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run parser
+        run: npm run parse
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code docs/ || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/
+          git commit -m "🔄 Автоматичне оновлення документації API"
+          git push
+
+      - name: Create summary
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          echo "✅ Документацію оновлено!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Дата оновлення: $(date)" >> $GITHUB_STEP_SUMMARY
+
+      - name: No changes
+        if: steps.git-check.outputs.changed != 'true'
+        run: |
+          echo "ℹ️ Змін в документації не виявлено" >> $GITHUB_STEP_SUMMARY
