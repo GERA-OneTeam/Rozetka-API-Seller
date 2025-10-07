@@ -9934,6 +9934,8 @@ HTTP/1.1 200 OK
 - **id** `Integer` _(опціонально)_ - <p>ID стратегії</p>
 - **category_id** `Integer[]` _(опціонально)_ - <p>ID категорії (можна передавати кілька значень через кому)</p>
 - **category_title** `String` _(опціонально)_ - <p>Назва категорії</p>
+- **seller_type** `Integer` _(опціонально)_ - <p>Тип продавця<br></p> <ul>   <li><code>3</code> – Маркет</li>   <li><code>4</code> – Rozetka EU</li> </ul>
+- **goods_state** `String` _(опціонально)_ - <p>Стан товару<br></p> <ul>   <li><code>0</code> – Вживаний</li>   <li><code>1</code> – Новий</li>   <li><code>2</code> – Відновлений</li>   <li><code>3</code> – Залишок (stock)</li> </ul><br>  Можна передавати кілька значень через кому
 
 **Request Meta Parameters:**
 
@@ -9953,6 +9955,7 @@ HTTP/1.1 200 OK
 - **category_id** `Integer` **_(обов'язково)_** - <p>ID категорії</p>
 - **seller_type** `Array` **_(обов'язково)_** - <p>Тип продавця</p>
 - **producers_filter** `Integer` **_(обов'язково)_** - <p>Фільтр по бренду</p>
+- **goods_state** `Integer[]` **_(обов'язково)_** - <p>Стан товару<br></p> <ul>   <li><code>0</code> – Вживаний</li>   <li><code>1</code> – Новий</li>   <li><code>2</code> – Відновлений</li>   <li><code>3</code> – Залишок (stock)</li> </ul>
 - **category** `Object` **_(обов'язково)_** - <p>Категорія</p>
 - **group_strategy_producers** `Object` **_(обов'язково)_** - <p>Бренди, по яким можна групувати</p>
 - **group_strategy_var_params** `Object` **_(обов'язково)_** - <p>Параметри, атрибути, характеристики по яким можна групувати товари</p>
@@ -9981,6 +9984,9 @@ HTTP/1.1 200 OK
                     "id": 4657334,
                     "title": "Аксесуари по догляду за обличчям"
                 },
+                "goods_state":[
+                     1
+                 ],
                 "group_strategy_producers": [],
                 "group_strategy_var_params": [
                     {
@@ -37663,4 +37669,4 @@ HTTP/1.1 200 OK
 ---
 
 *Документація згенерована автоматично з [Rozetka API](https://api-seller.rozetka.com.ua/apidoc)*
-*Остання оновлення: 06.10.2025, 01:15:51*
+*Остання оновлення: 07.10.2025, 01:14:22*
