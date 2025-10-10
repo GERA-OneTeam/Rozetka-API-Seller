@@ -1077,7 +1077,6 @@ HTTP/1.1 200 OK
 #### Успішна відповідь
 
 - **InvoiceModel.id** `Integer` **_(обов'язково)_** - <p>ID інвойса</p>
-- **InvoiceModel.liqpay_amount** `Number` **_(обов'язково)_** - <p>Сума рахунку</p>
 - **InvoiceModel.contract_number** `String` **_(обов'язково)_** - <p>Номер договору з продавцем</p>
 - **InvoiceModel.number** `String` **_(обов'язково)_** - <p>Номер рахунку</p>
 - **InvoiceModel.filename** `String` **_(обов'язково)_** - <p>Назва файлу рахунку</p>
@@ -1085,6 +1084,7 @@ HTTP/1.1 200 OK
 - **InvoiceModel.type_title** `String` **_(обов'язково)_** - <p>Назва типу рахунку обраною мовою</p>
 - **InvoiceModel.date_of_invoice** `Date` **_(обов'язково)_** - <p>Дата виставлення рахунку</p>
 - **InvoiceModel.amount** `Number` **_(обов'язково)_** - <p>Сума виставленого рахунку</p>
+- **InvoiceModel.liqpay_amount** `Number` **_(обов'язково)_** - <p>Сума рахунку</p>
 - **InvoiceModel.is_archive** `boolean` **_(обов'язково)_** - <p>Архівний (так/ні)</p>
 - **InvoiceModel.status** `Number` **_(обов'язково)_** - <p><a href="#api-Models-InvoiceStatuses">Статус рахунку</a></p>
 - **InvoiceModel.payment_service_bill_id** `Integer` **_(обов'язково)_** - <p>Зовнішній Id інвойса</p>
@@ -2506,9 +2506,6 @@ HTTP/1.1 200 OK
 - **OrderStatusPayment.value** `Integer` **_(обов'язково)_** - <p><code>Deprecated</code>Числове значення (не використовується)</p>
 - **OrderStatusPayment.payment_invoice_id** `Number` **_(обов'язково)_** - <p>ID рахунку на оплату</p>
 - **OrderStatusPayment.created_at** `String` **_(обов'язково)_** - <p>Дата створення запису про зміну статусу оплати</p>
-**ExtraField:**
-
-- **OrderStatusPayment.payment_details** `Object` **_(обов'язково)_** - <p><a href="#api-Models-PaymentProcessingStatusModel">Статус платежу в LiqPay</a></p>
 
 ---
 
@@ -2525,40 +2522,6 @@ HTTP/1.1 200 OK
 - **paymentMethodId** `Integer` **_(обов'язково)_** - <p>ID методу оплати</p>
 - **title** `String` **_(обов'язково)_** - <p>Назва методу оплати</p>
 - **infoIcon** `String` **_(обов'язково)_** - <p>Посилання на іконку</p>
-
----
-
-### Статус платежу в LiqPay [PaymentProcessingStatus]
-
-**** `/`
-
-<p>Опис полів статусу платежу в LiqPay <i>Не є API-запитом</i></p>
-
-**Версія:** 0.0.0
-
-#### Успішна відповідь
-
-- **public_key** `String` **_(обов'язково)_** - <p>Публічний ключ магазину</p>
-- **sender_card_mask2** `String` **_(обов'язково)_** - <p>Карта відправника</p>
-- **sender_card_bank** `String` **_(обов'язково)_** - <p>Банк відправника</p>
-- **sender_card_type** `String` **_(обов'язково)_** - <p>Тип карти відправника MC/Visa</p>
-- **rrn_debit** `String` **_(обов'язково)_** - <p>Унікальний номер транзакції в системі авторизації і розрахунків обслуговуючого банку (Retrieval Reference number)</p>
-- **transaction_id** `Integer` **_(обов'язково)_** - <p>ID транзакції в системі LiqPay</p>
-- **order_id** `String` **_(обов'язково)_** - <p>Id замовлення + хеш</p>
-
-#### Приклад відповіді
-
-```json
-{
-    "public_key": "i65273*****",
-    "sender_card_mask2": "9999***99",
-    "sender_card_bank": "pb",
-    "sender_card_type": "mc",
-    "rrn_debit": "001399999999",
-    "transaction_id": 1129999999,
-    "order_id": "1234567_qwerty"
-}
-```
 
 ---
 
