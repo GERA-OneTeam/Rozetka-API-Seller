@@ -2123,7 +2123,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 
 ---
 

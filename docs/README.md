@@ -2398,6 +2398,7 @@ HTTP/1.1 200 OK
 - **params.bind_fail_reason** `Integer` **_(обов'язково)_** - <p>Причина не прив'язки параметра (0 – Параметр прив'язаний, 1 – Параметр (значення) не прив'язаний, 2 – Відсутня параметр для прив'язки, 3 – Формат значень не підходить для прив'язки, 4 – Помилка прив'язки)</p>
 - **params.rz_title** `String` **_(обов'язково)_** - <p>Назва характеристики розетки</p>
 - **params.seller_value** `String|Integer|Number|Boolean` **_(обов'язково)_** - <p>Значення характеристики продавця (може приймати різні типи за аналогією з params.value)</p>
+- **params.unit** `String` **_(обов'язково)_** - <p>Одиниця виміру товару</p>
 
 #### Приклад відповіді
 
@@ -2512,7 +2513,8 @@ HTTP/1.1 200 OK
                  ],
                  "bind_fail_reason": 1,
                  "rz_title": "Длина рукава",
-                 "seller_value": "С короткими рукавами"
+                 "seller_value": "С короткими рукавами",
+                 "unit": ""
              },
              {
                  "id": 3334,
@@ -2539,7 +2541,8 @@ HTTP/1.1 200 OK
                  ],
                  "bind_fail_reason": 4,
                  "rz_title": "Размер",
-                 "seller_value": "XS,XL"
+                 "seller_value": "XS,XL",
+                 "unit": ""
              },
              {
                  "id": 4432,
@@ -2548,7 +2551,8 @@ HTTP/1.1 200 OK
                  "value": 1.3,
                  "bind_fail_reason": 1,
                  "rz_title": "Вес в упаковке, кг",
-                 "seller_value": 1.3
+                 "seller_value": 1.3,
+                 "unit": ""
              },
              {
                  "id": 112222,
@@ -2558,7 +2562,8 @@ HTTP/1.1 200 OK
                  "value_ua": "значення юа",
                  "bind_fail_reason": 1,
                  "rz_title": "Дополнительные характеристики",
-                 "seller_value": "значення юа"
+                 "seller_value": "значення юа",
+                 "unit": ""
              }
           ],
                  "EAN": "",
@@ -19542,7 +19547,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 
 ---
 
@@ -21629,6 +21635,7 @@ HTTP/1.1 200 OK
 - **city_id** `String` **_(обов'язково)_** - <p>ID населеного пункту</p>
 - **pickup_name** `String` _(опціонально)_ - <p>Назва відділеня</p>
 - **pickup_id** `String` _(опціонально)_ - <p>ID відділення</p>
+- **is_partner** `String` _(опціонально)_ - <p>Ознака чи партнерське відділення</p>
 - **page** `Integer` _(опціонально)_ - <p>Пагінація. Номер сторінки</p>
 - **pageSize** `Integer` _(опціонально)_ - <p>Пагінація. Кількість елементів на сторінці</p>
 
@@ -21648,7 +21655,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 - **Success-Response** `json` **_(обов'язково)_** - <p>{ &quot;success&quot;: boolean, &quot;content&quot;: Object }</p>
 
 #### Приклад відповіді
@@ -21749,7 +21757,8 @@ HTTP/1.1 200 OK
                          }
                      },
                  ],
-                 "pickupChildren": true
+                 "pickupChildren": true,
+                 "is_partner": true
              }
          ],
          "_meta": {
@@ -21797,7 +21806,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 - **Success-Response** `json` **_(обов'язково)_** - <p>{ &quot;success&quot;: boolean, &quot;content&quot;: Object }</p>
 
 #### Приклад відповіді
@@ -22161,6 +22171,7 @@ HTTP/1.1 200 OK
 - **DeliveryTtn.delivery_status_title** `String` **_(обов'язково)_** - <p>Назва статусу доставки <i>(ExtraField)</i></p>
 - **DeliveryTtn.need_label** `Boolean` **_(обов'язково)_** - <p>Чи потрібні посилці додаткові стікери <i>(ExtraField)</i></p>
 - **DeliveryTtn.is_reserve_ending** `Boolean` **_(обов'язково)_** - <p>Чи закінчується термін резерву (за два дні) <i>(ExtraField)</i></p>
+- **DeliveryTtn.is_update_available** `Boolean` **_(обов'язково)_** - <p>Чи доступне оновлення ТТН <i>(ExtraField)</i></p>
 **Response Meta Fields:**
 
 - **_meta** `Object` **_(обов'язково)_** - <p>Дані пагінації</p>
@@ -22260,7 +22271,8 @@ HTTP/1.1 200 OK
                "delivery_status_title": "",
                "post_pay_commission": 123,
                "need_label": false,
-               "is_reserve_ending": false
+               "is_reserve_ending": false,
+               "is_update_available": true
            },
            ...
        ],
@@ -37575,4 +37587,4 @@ HTTP/1.1 200 OK
 ---
 
 *Документація згенерована автоматично з [Rozetka API](https://api-seller.rozetka.com.ua/apidoc)*
-*Остання оновлення: 14.10.2025, 01:15:05*
+*Остання оновлення: 15.10.2025, 01:17:05*

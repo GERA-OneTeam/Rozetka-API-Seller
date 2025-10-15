@@ -352,6 +352,7 @@ HTTP/1.1 200 OK
 - **city_id** `String` **_(обов'язково)_** - <p>ID населеного пункту</p>
 - **pickup_name** `String` _(опціонально)_ - <p>Назва відділеня</p>
 - **pickup_id** `String` _(опціонально)_ - <p>ID відділення</p>
+- **is_partner** `String` _(опціонально)_ - <p>Ознака чи партнерське відділення</p>
 - **page** `Integer` _(опціонально)_ - <p>Пагінація. Номер сторінки</p>
 - **pageSize** `Integer` _(опціонально)_ - <p>Пагінація. Кількість елементів на сторінці</p>
 
@@ -371,7 +372,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 - **Success-Response** `json` **_(обов'язково)_** - <p>{ &quot;success&quot;: boolean, &quot;content&quot;: Object }</p>
 
 #### Приклад відповіді
@@ -472,7 +474,8 @@ HTTP/1.1 200 OK
                          }
                      },
                  ],
-                 "pickupChildren": true
+                 "pickupChildren": true,
+                 "is_partner": true
              }
          ],
          "_meta": {
@@ -520,7 +523,8 @@ HTTP/1.1 200 OK
 - **house_number** `String[]` **_(обов'язково)_** - <p>Номери будинку, в якому знаходиться відділення</p>
 - **schedules** `RozetkaDeliveryPickupSchedules[]` **_(обов'язково)_** - <p>Список графіків роботи у святкові дні <br> <b><a href="#api-Models-RozetkaDeliveryPickupSchedules">RozetkaDeliveryPickupSchedules</a></b></p>
 - **schedule** `RozetkaDeliveryScheduleDefault` **_(обов'язково)_** - <p>Графік роботи <br><b><a href="#api-Models-RozetkaDeliveryScheduleDefault">RozetkaDeliveryScheduleDefault</a></b></p>
-- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне ваідділення для отримання посилом з MeestExpress</p>
+- **pickupChildren** `Boolean` **_(обов'язково)_** - <p>Чи доступне відділення для отримання посилок з MeestExpress</p>
+- **is_partner** `Boolean` **_(обов'язково)_** - <p>Ознака чи партнерське відділення</p>
 - **Success-Response** `json` **_(обов'язково)_** - <p>{ &quot;success&quot;: boolean, &quot;content&quot;: Object }</p>
 
 #### Приклад відповіді
@@ -884,6 +888,7 @@ HTTP/1.1 200 OK
 - **DeliveryTtn.delivery_status_title** `String` **_(обов'язково)_** - <p>Назва статусу доставки <i>(ExtraField)</i></p>
 - **DeliveryTtn.need_label** `Boolean` **_(обов'язково)_** - <p>Чи потрібні посилці додаткові стікери <i>(ExtraField)</i></p>
 - **DeliveryTtn.is_reserve_ending** `Boolean` **_(обов'язково)_** - <p>Чи закінчується термін резерву (за два дні) <i>(ExtraField)</i></p>
+- **DeliveryTtn.is_update_available** `Boolean` **_(обов'язково)_** - <p>Чи доступне оновлення ТТН <i>(ExtraField)</i></p>
 **Response Meta Fields:**
 
 - **_meta** `Object` **_(обов'язково)_** - <p>Дані пагінації</p>
@@ -983,7 +988,8 @@ HTTP/1.1 200 OK
                "delivery_status_title": "",
                "post_pay_commission": 123,
                "need_label": false,
-               "is_reserve_ending": false
+               "is_reserve_ending": false,
+               "is_update_available": true
            },
            ...
        ],
